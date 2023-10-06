@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "format": "prettier --write \"./**/*.{ts,tsx,css,md,mdx,json}\""
+  },
   "devDependencies": {
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   }
 }
