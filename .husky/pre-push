@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+pids=()
+
+npm run typecheck &
+pids+=( "$!" )
+
+npm run lint &
+pids+=( "$!" )
+
+npm run doctest &
+pids+=( "$!" )
+
+# get return code of each background task
+for pid in "${pids[@]}"; do
+	wait "$pid"
+done
