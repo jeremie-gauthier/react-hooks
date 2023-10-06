@@ -22,8 +22,12 @@ const DEFAULT_OPTIONS = {
 export const useCounter = ({ initialCount, step } = DEFAULT_OPTIONS) => {
   const [count, setCount] = useState(initialCount);
 
-  const increment = () => setCount((currentCount) => currentCount + step);
-  const decrement = () => setCount((currentCount) => currentCount - step);
+  const increment = () => {
+    setCount((currentCount) => currentCount + step);
+  };
+  const decrement = () => {
+    setCount((currentCount) => currentCount - step);
+  };
 
   return {
     /**

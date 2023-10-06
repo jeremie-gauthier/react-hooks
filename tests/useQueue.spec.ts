@@ -8,10 +8,14 @@ describe('useQueue', () => {
 
     expect(result.current.queue).toStrictEqual([]);
 
-    act(() => result.current.add(1));
+    act(() => {
+      result.current.add(1);
+    });
     expect(result.current.queue).toStrictEqual([1]);
 
-    act(() => result.current.add(2));
+    act(() => {
+      result.current.add(2);
+    });
     expect(result.current.queue).toStrictEqual([1, 2]);
   });
 
@@ -20,10 +24,14 @@ describe('useQueue', () => {
 
     expect(result.current.queue).toStrictEqual([1, 2, 3, 4]);
 
-    act(() => result.current.remove());
+    act(() => {
+      result.current.remove();
+    });
     expect(result.current.queue).toStrictEqual([2, 3, 4]);
 
-    act(() => result.current.remove());
+    act(() => {
+      result.current.remove();
+    });
     expect(result.current.queue).toStrictEqual([3, 4]);
   });
 
@@ -32,7 +40,9 @@ describe('useQueue', () => {
 
     expect(result.current.queue).toStrictEqual([1, 2, 3, 4]);
 
-    act(() => result.current.clear());
+    act(() => {
+      result.current.clear();
+    });
     expect(result.current.queue).toStrictEqual([]);
   });
 
@@ -51,19 +61,29 @@ describe('useQueue', () => {
 
     expect(result.current.size).toBe(0);
 
-    act(() => result.current.add(1));
+    act(() => {
+      result.current.add(1);
+    });
     expect(result.current.size).toBe(1);
 
-    act(() => result.current.add(2));
+    act(() => {
+      result.current.add(2);
+    });
     expect(result.current.size).toBe(2);
 
-    act(() => result.current.remove());
+    act(() => {
+      result.current.remove();
+    });
     expect(result.current.size).toBe(1);
 
-    act(() => result.current.remove());
+    act(() => {
+      result.current.remove();
+    });
     expect(result.current.size).toBe(0);
 
-    act(() => result.current.remove());
+    act(() => {
+      result.current.remove();
+    });
     expect(result.current.size).toBe(0);
   });
 
@@ -72,10 +92,14 @@ describe('useQueue', () => {
 
     expect(result.current.isEmpty).toBe(true);
 
-    act(() => result.current.add(1));
+    act(() => {
+      result.current.add(1);
+    });
     expect(result.current.isEmpty).toBe(false);
 
-    act(() => result.current.clear());
+    act(() => {
+      result.current.clear();
+    });
     expect(result.current.isEmpty).toBe(true);
   });
 });

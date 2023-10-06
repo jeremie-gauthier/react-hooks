@@ -4,7 +4,7 @@ import { useReducer } from 'react';
  * The type of the queue
  * @template Item Type of the `queue` elements.
  */
-type Queue<Item> = Array<Item>;
+type Queue<Item> = Item[];
 type QueueAction<Item> =
   | { type: 'ENQUEUE'; item: Item }
   | { type: 'DEQUEUE' }
@@ -29,13 +29,17 @@ const queueReducer = <Item>(queue: Queue<Item>, action: QueueAction<Item>) => {
 export const useQueue = <Item>(initialValues: Queue<Item> = []) => {
   const [queue, dispatch] = useReducer(queueReducer<Item>, initialValues);
 
-  const enqueue = (item: Item) => dispatch({ type: 'ENQUEUE', item });
+  const enqueue = (item: Item) => {
+    dispatch({ type: 'ENQUEUE', item });
+  };
   const dequeue = () => {
     const first = peek();
     dispatch({ type: 'DEQUEUE' });
     return first;
   };
-  const clear = () => dispatch({ type: 'CLEAR' });
+  const clear = () => {
+    dispatch({ type: 'CLEAR' });
+  };
   const peek = () => queue[0];
 
   return {

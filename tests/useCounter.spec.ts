@@ -10,10 +10,14 @@ describe('useCounter', () => {
     expect(result.current.increment).toBeDefined();
     expect(result.current.decrement).toBeDefined();
 
-    act(() => result.current.increment());
+    act(() => {
+      result.current.increment();
+    });
     expect(result.current.count).toBe(1);
 
-    act(() => result.current.decrement());
+    act(() => {
+      result.current.decrement();
+    });
     expect(result.current.count).toBe(0);
   });
 
@@ -32,11 +36,15 @@ describe('useCounter', () => {
     expect(result.current.decrement).toBeDefined();
 
     const expectedAdd = INITIAL_VALUE + STEP;
-    act(() => result.current.increment());
+    act(() => {
+      result.current.increment();
+    });
     expect(result.current.count).toBe(expectedAdd);
 
     const expectedSub = INITIAL_VALUE;
-    act(() => result.current.decrement());
+    act(() => {
+      result.current.decrement();
+    });
     expect(result.current.count).toBe(expectedSub);
   });
 });
