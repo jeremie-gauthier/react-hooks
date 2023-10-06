@@ -7,13 +7,13 @@ describe('useCounter', () => {
     const { result } = renderHook(() => useCounter());
 
     expect(result.current.count).toBe(0);
-    expect(result.current.add).toBeDefined();
-    expect(result.current.sub).toBeDefined();
+    expect(result.current.increment).toBeDefined();
+    expect(result.current.decrement).toBeDefined();
 
-    act(() => result.current.add());
+    act(() => result.current.increment());
     expect(result.current.count).toBe(1);
 
-    act(() => result.current.sub());
+    act(() => result.current.decrement());
     expect(result.current.count).toBe(0);
   });
 
@@ -22,21 +22,21 @@ describe('useCounter', () => {
     const STEP = 4;
     const { result } = renderHook(() =>
       useCounter({
-        initialValue: INITIAL_VALUE,
+        initialCount: INITIAL_VALUE,
         step: STEP,
       }),
     );
 
     expect(result.current.count).toBe(INITIAL_VALUE);
-    expect(result.current.add).toBeDefined();
-    expect(result.current.sub).toBeDefined();
+    expect(result.current.increment).toBeDefined();
+    expect(result.current.decrement).toBeDefined();
 
     const expectedAdd = INITIAL_VALUE + STEP;
-    act(() => result.current.add());
+    act(() => result.current.increment());
     expect(result.current.count).toBe(expectedAdd);
 
     const expectedSub = INITIAL_VALUE;
-    act(() => result.current.sub());
+    act(() => result.current.decrement());
     expect(result.current.count).toBe(expectedSub);
   });
 });

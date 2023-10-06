@@ -111,5 +111,14 @@
     "skipLibCheck": false /* Skip type checking all .d.ts files. */
   },
   // "include": ["sandbox"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "typedocOptions": {
+    "entryPoints": ["lib/*.ts"],
+    "out": "docs",
+    "plugin": ["typedoc-plugin-missing-exports", "typedoc-plugin-coverage"],
+    "coverageLabel": "doccov",
+    "navigationLinks": {
+      "Github": "https://github.com/jeremie-gauthier/react-hooks"
+    }
+  }
 }

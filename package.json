@@ -1,8 +1,11 @@
 {
+  "name": "react-hooks",
   "engines": {
     "node": ">=16"
   },
   "scripts": {
+    "docgen": "typedoc",
+    "doctest": "typedoc --validation.notDocumented --requiredToBeDocumented Function --requiredToBeDocumented Parameter --requiredToBeDocumented TypeParameter --treatValidationWarningsAsErrors --emit none",
     "dev": "vite",
     "test:watch": "vitest",
     "test:coverage": "vitest --coverage",
@@ -27,6 +30,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "jsdom": "^22.1.0",
     "prettier": "^3.0.3",
+    "typedoc": "^0.25.1",
+    "typedoc-plugin-coverage": "^2.2.0",
+    "typedoc-plugin-missing-exports": "^2.1.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.11",
     "vitest": "^0.34.6"
