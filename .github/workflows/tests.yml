@@ -1,0 +1,33 @@
+name: Tests CI
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '.github/workflows/tests.yml'
+      - 'lib/**/*'
+      - 'tests/**/*'
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Test Library
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Lint code
+        run: npm run lint
+      - name: Typecheck code
+        run: npm run typecheck
+      - name: Documentation validation test
+        run: npm run doctest
+      - name: Run tests and collect coverage
+        run: npm run test:coverage
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
