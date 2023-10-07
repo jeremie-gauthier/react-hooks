@@ -12,12 +12,12 @@ type QueueAction<Item> =
 
 const queueReducer = <Item>(queue: Queue<Item>, action: QueueAction<Item>) => {
   switch (action.type) {
-    case 'ENQUEUE':
-      return [...queue, action.item];
-    case 'DEQUEUE':
-      return queue.slice(1);
     case 'CLEAR':
       return [];
+    case 'DEQUEUE':
+      return queue.slice(1);
+    case 'ENQUEUE':
+      return [...queue, action.item];
   }
 };
 
